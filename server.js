@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const User = require('./models/user-model');
 
 const PORT = process.env.PORT || 3000;
-const URL = `mongodb+srv://mixxmaster:1324354657q@testdb.mhzyzno.mongodb.net/?retryWrites=true&w=majority`;
+const URL = process.env.URL;
 
 const app = express();
 app.use(express.json());
