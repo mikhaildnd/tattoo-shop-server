@@ -6,7 +6,7 @@ const getUsers = (req, res) => {
     .then(users => {
       res.status(200).json(users);
     })
-    .catch(() => handleError(res, 'Что-то пошло не так'));
+    .catch(error => handleError(res, error));
 };
 
 module.exports = { getUsers };
