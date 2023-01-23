@@ -1,4 +1,13 @@
 {
+  "name": "tattoo-shop-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": "https://github.com/mikhaildnd/tattoo-shop-server.git",
+  "author": "Mixxmaster <dundukovmi@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "mongodb": "^4.13.0",
