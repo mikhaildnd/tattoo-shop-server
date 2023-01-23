@@ -1,13 +1,15 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const URL = `mongodb+srv://mixxmaster:1324354657q@testdb.mhzyzno.mongodb.net/?retryWrites=true&w=majority`;
 
 const app = express();
 app.use(express.json());
 
 mongoose
+  .set('strictQuery', false) //fix Mongoose deprecation warning
   .connect(URL)
   .then(() => console.log('Connected to MongoDB'))
   .catch(error => console.log(`DB connection error: ${error}`));
