@@ -1,13 +1,14 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const User = require('./models/user-model');
+const authRoutes = require('./routes/auth-routes');
 
 const PORT = process.env.PORT || 3000;
 const URL = process.env.URL;
 
 const app = express();
 app.use(express.json());
+app.use(authRoutes);
 
 mongoose
   .set('strictQuery', false) //fix Mongoose deprecation warning
@@ -17,16 +18,4 @@ mongoose
 
 app.listen(PORT, error => {
   error ? console.log(error) : console.log(`Listening port: ${PORT}`);
-});
-
-const handleError = (res, error) => {
-  res.status(500).json({ error });
-};
-
-app.get('/users', (req, res) => {
-  User.find()
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch(() => handleError(res, 'Что-то пошло не так'));
 });
