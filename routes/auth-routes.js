@@ -1,15 +1,8 @@
 const express = require('express');
-const User = require('../models/user-model');
-const handleError = require('../error-handlers/endpoint-error-handler');
+const { getUsers } = require('../controllers/auth-controller');
 
 const router = express.Router();
 
-router.get('/users', (req, res) => {
-  User.find()
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch(() => handleError(res, 'Что-то пошло не так'));
-});
+router.get('/users', getUsers);
 
 module.exports = router;
